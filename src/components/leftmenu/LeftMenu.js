@@ -222,8 +222,8 @@ LeftMenu.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        pageList: state.pageList,
-        activeKey:state.activeKey
+        pageList: state.page.pageList,
+        activeKey: state.page.activeKey
     }
 };
 

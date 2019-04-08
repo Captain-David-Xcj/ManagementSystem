@@ -15,13 +15,10 @@ class TabContent extends React.Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log("refreshing")
-        console.log(this.state)
         this.setState({
             panes: nextProps.pageList,
             activeKey: nextProps.activeKey
         })
-        console.log(this.state)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
