@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c40cd35-5979-48f2-8407-3cdf3911f06b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/leftmenu/LeftMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftmenu/LeftMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabcontent/TabContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabcontent/TabContent.js" afterDir="false" />
-    </list>
+    <list default="true" id="0c40cd35-5979-48f2-8407-3cdf3911f06b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -215,7 +212,7 @@
       <workItem from="1554526437409" duration="67000" />
       <workItem from="1554527195100" duration="9207000" />
       <workItem from="1554607648894" duration="12839000" />
-      <workItem from="1554689842202" duration="38467000" />
+      <workItem from="1554689842202" duration="38734000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1554741527266</created>
@@ -228,7 +225,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75154000" />
+    <option name="totallyTimeSpent" value="75421000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -372,6 +369,14 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
