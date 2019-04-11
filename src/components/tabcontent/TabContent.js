@@ -2,6 +2,8 @@ import React from 'react';
 import {Tabs} from 'antd';
 import {addPage, changePage, deletePage} from "../../actions";
 import {connect} from "react-redux";
+import Content from '../content/Content';
+import {Route} from "react-router";
 
 const TabPane = Tabs.TabPane;
 
@@ -15,22 +17,16 @@ class TabContent extends React.Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
+        //console.log(`AK will change from ${this.props.activeKey} to ${nextProps.activeKey}`)
         this.setState({
             panes: nextProps.pageList,
             activeKey: nextProps.activeKey
         })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(this.state)
-    }
-
-    componentDidMount() {
-        this.props.onRef(this);
-    }
-
     onChange = (activeKey) => {
         this.props.changePage(activeKey);
+        this.props.history.push(`/${activeKey}`,this.state)
     };
 
     onEdit = (targetKey, action) => {
@@ -38,11 +34,14 @@ class TabContent extends React.Component {
     };
 
     add = (key) => {
-        this.props.changePage(key);
     };
 
     remove = (targetKey) => {
+        console.log(this.props.activeKey)
         this.props.deletePage(targetKey);
+        console.log(this.props.activeKey)
+        this.props.history.push(`/${this.state.activeKey}`,this.state)
+
     };
 
     render() {
@@ -50,14 +49,18 @@ class TabContent extends React.Component {
             <div style={{padding: '0px 0px 0px 16px', background: '#fff', height: "100%"}}>
                 <Tabs
                     hideAdd
-                    onChange={this.onChange}
+                    onChange={this.onChange.bind(this)}
                     activeKey={this.state.activeKey}
                     type="editable-card"
-                    onEdit={this.onEdit}>
-                    {this.state.panes.map(pane =>
-                        <TabPane tab={pane.title} key={pane.key}>
-                            {pane.content}
-                        </TabPane>)}
+                    onEdit={this.onEdit.bind(this)}>
+                    {this.state.panes.map(pane => {
+                            return (
+                                <TabPane tab={pane.title} key={pane.key}>
+                                    <Route path="/:key" component={Content} />
+                                </TabPane>
+                            )
+                        }
+                    )}
                 </Tabs>
             </div>
         )

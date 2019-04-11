@@ -1,14 +1,7 @@
 import {ADD_PAGE, DELETE_PAGE, CHANGE_PAGE} from "../actions";
 
 const initialState = {
-    pageList: [
-        {
-            key: "0",
-            title: "welcome",
-            component: "Welcome",
-            content: '欢迎欢迎，热烈欢迎！'
-        }
-    ],
+    pageList: [],
     activeKey: "0"
 };
 

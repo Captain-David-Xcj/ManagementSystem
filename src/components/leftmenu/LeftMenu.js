@@ -17,6 +17,13 @@ class LeftMenu extends React.Component {
             pageList:[],
             activeKey:""
         }
+        this.props.addPage({
+            title:"Welcome",
+            key: `0`,
+            component: `Welcome`,
+            content: '欢迎欢迎，热烈欢迎123！'
+        });
+        this.props.history.push("/0",this.state)
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -29,7 +36,6 @@ class LeftMenu extends React.Component {
     formSubmenusChild(obj) {
         let cHtml = <div></div>;
         let childArray = obj.child;
-        //console.log(obj);
         if ("undefined" != typeof (childArray) && childArray.length > 0) {
             cHtml = childArray.map((item, i) => {
                 return this.formSubmenusChild(item);
@@ -38,7 +44,7 @@ class LeftMenu extends React.Component {
                 <SubMenu key={obj.key} title={
                     <span>
                         <Icon type={obj.icon}/>
-                        <span>{obj.name}</span>
+                        <span>{obj.tittle}</span>
                     </span>
                 }>
                     {cHtml}
@@ -46,32 +52,33 @@ class LeftMenu extends React.Component {
             )
         } else {
             return (
-                <Mitem routeurl={obj.routeUrl} key={obj.key}><Icon type={obj.icon}/>
-                    {obj.name}
+                <Mitem routeurl={`/${obj.key}`} key={obj.key} component={obj.component} tittle={obj.tittle}>
+                    <Icon type={obj.icon}/>
+                    {obj.tittle}
                 </Mitem>
             )
         }
     }
 
     handleClick(e) {
+        console.log(e);
         const panes = this.state.pageList;
         for (let i = 0; i < panes.length; i++) {
             if (panes[i].key === e.key) {
                 console.log("这个标签页已经打开了");
                 this.props.changePage(e.key);
+                this.props.history.push(`/${e.key}`,this.state)
                 return;
             }
         }
         this.props.addPage({
-            title:`${e.key}`,
+            title:`${e.item.props.component}`,
             key: `${e.key}`,
-            component: "Welcome123",
+            component: `${e.item.props.component}`,
             content: '欢迎欢迎，热烈欢迎123！'
         });
         this.props.changePage(e.key);
-        //console.log(this.props.page);
-        //this.props.handle(e.key)
-
+        this.props.history.push(`/${e.key}`,this.state)
 
         //const {actions}=this.props;
         //let menuInfo={
@@ -92,22 +99,21 @@ class LeftMenu extends React.Component {
                     return this.formSubmenusChild(menuItem);
                 } else {
                     return (
-                        <Mitem routeurl={menuItem.routeUrl} key={menuItem.key}>
+                        <Mitem routeurl={`/${menuItem.key}`} key={menuItem.key} tittle={menuItem.tittle}>
                             <Icon type={menuItem.icon}/>
-                            {menuItem.name}
+                            {menuItem.tittle}
                         </Mitem>
                     )
                 }
             }
         );
         return (
-            <Menu theme="light"
+            <Menu theme="dark"
                   onClick={this.handleClick.bind(this)}
                   style={{width: 200}}
                   defaultOpenKeys={['sub1']}
                   selectedKeys={[backEndMenuUrl]}
-                  mode="inline"
-            >
+                  mode="inline">
                 {html}
             </Menu>
         )
@@ -124,97 +130,105 @@ LeftMenu.defaultProps = {
         {
             "key": "0",
             "icon": "appstore",
-            "name": "Appstore",
+            "tittle": "Appstore",
             "routeUrl": "",
             "child": [{
                 "key": "3",
                 "icon": "search",
-                "name": "Search",
-                "routeUrl": ""
+                "tittle": "Search",
+                "routeUrl": "",
+                "component":"Search"
             }]
         },
         {
             "key": "1",
             "icon": "mail",
-            "name": "Mail",
+            "tittle": "Mail",
             "routeUrl": "",
             "child": [{
                 "key": "4",
                 "icon": "notification",
-                "name": "Notification",
-                "routeUrl": ""
+                "tittle": "Notification",
+                "routeUrl": "",
+                "component":"Picture"
             }]
         },
         {
             "key": "2",
             "icon": "setting",
-            "name": "Setting",
+            "tittle": "Setting",
             "routeUrl": "",
             "child": [{
                 "key": "5",
                 "icon": "star",
-                "name": "Star",
-                "routeUrl": ""
+                "tittle": "Star",
+                "routeUrl": "",
+                "component":"Picture"
             }]
         },
         {
             "key": "6",
             "icon": "setting",
-            "name": "Setting",
+            "tittle": "Setting",
             "routeUrl": "",
             "child": [{
                 "key": "7",
                 "icon": "star",
-                "name": "Star",
-                "routeUrl": ""
+                "tittle": "Star",
+                "routeUrl": "",
+                "component":"Picture"
             }]
         },
         {
             "key": "8",
             "icon": "setting",
-            "name": "Setting",
+            "tittle": "Setting",
             "routeUrl": "",
             "child": [{
                 "key": "9",
                 "icon": "star",
-                "name": "Star",
-                "routeUrl": ""
+                "tittle": "Star",
+                "routeUrl": "",
+                "component":"Picture"
             }]
         },
         {
             "key": "10",
             "icon": "setting",
-            "name": "Setting",
+            "tittle": "Setting",
             "routeUrl": "",
             "child": [{
                 "key": "11",
                 "icon": "star",
-                "name": "Star",
-                "routeUrl": ""
+                "tittle": "Star",
+                "routeUrl": "",
+                "component":"Picture"
             }]
         },
         {
             "key": "12",
             "icon": "setting",
-            "name": "Setting",
+            "tittle": "Setting",
             "routeUrl": "",
             "child": [{
                 "key": "13",
                 "icon": "star",
-                "name": "Star",
-                "routeUrl": ""
+                "tittle": "Star",
+                "routeUrl": "",
+                "component":"Picture"
             }]
         },
         {
             "key": "14",
             "icon": "setting",
-            "name": "Setting",
+            "tittle": "Setting",
             "routeUrl": "",
             "child": [{
                 "key": "15",
                 "icon": "star",
-                "name": "Star",
-                "routeUrl": ""
+                "tittle": "Star",
+                "routeUrl": "",
+                "component":"Picture"
             }]
         }
     ]

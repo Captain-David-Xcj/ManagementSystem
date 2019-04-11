@@ -2,14 +2,11 @@ import React from 'react';
 import {Layout} from "antd";
 import LeftMenu from "./components/leftmenu/LeftMenu";
 import TabContent from "./components/tabcontent/TabContent";
+import {Route} from "react-router";
 
 const {Header, Footer, Sider, Content} = Layout;
 
 class LayOut extends React.Component {
-    onRef=(ref)=>{
-        this.child=ref
-    };
-
     render() {
         return (
             <div>
@@ -26,13 +23,11 @@ class LayOut extends React.Component {
                             background: "#fff",
                             margin: '0px 0px 0px 50px'
                         }}>
-                            <LeftMenu handle={(key)=> {
-                                this.child.add(key)
-                            }}/>
+                            <Route path="/" component={LeftMenu}/>
                         </Sider>
 
                         <Content style={{margin: '0px 50px 0px 0px', height:'inherit'}}>
-                            <TabContent onRef={this.onRef}/>
+                            <Route path="/" component={TabContent}/>
                         </Content>
                     </Layout>
 
