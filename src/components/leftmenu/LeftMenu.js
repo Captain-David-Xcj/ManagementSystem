@@ -3,7 +3,7 @@ import React from 'react';
 import {Menu, Icon} from 'antd';
 import 'antd/dist/antd.css';
 import {connect} from 'react-redux';
-import {addPage,deletePage,changePage} from "../../actions";
+import {addPage, deletePage, changePage} from "../../actions";
 
 const Mitem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -14,22 +14,21 @@ class LeftMenu extends React.Component {
         this.state = {
             menuItems: props.menuItems,
             backEndMenuUrl: props.backEndMenuUrl,
-            pageList:[],
-            activeKey:""
+            pageList: [],
+            activeKey: ""
         }
         this.props.addPage({
-            title:"Welcome",
-            key: `0`,
-            component: `Welcome`,
-            content: '欢迎欢迎，热烈欢迎123！'
+            title: "Welcome",
+            key: `welcome`,
+            component: `Welcome`
         });
-        this.props.history.push("/0",this.state)
+        this.props.history.push("/welcome", this.state)
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
         this.setState({
-            pageList:nextProps.pageList,
-            activeKey:nextProps.activeKey
+            pageList: nextProps.pageList,
+            activeKey: nextProps.activeKey
         })
     }
 
@@ -67,28 +66,18 @@ class LeftMenu extends React.Component {
             if (panes[i].key === e.key) {
                 console.log("这个标签页已经打开了");
                 this.props.changePage(e.key);
-                this.props.history.push(`/${e.key}`,this.state)
+                this.props.history.push(`./${e.key}`, this.state)
                 return;
             }
         }
         this.props.addPage({
-            title:`${e.item.props.component}`,
+            title: `${e.item.props.component}`,
             key: `${e.key}`,
             component: `${e.item.props.component}`,
             content: '欢迎欢迎，热烈欢迎123！'
         });
         this.props.changePage(e.key);
-        this.props.history.push(`/${e.key}`,this.state)
-
-        //const {actions}=this.props;
-        //let menuInfo={
-        //    打印antd Menu组件的onClick返回值（e）可以看出通过e.item.props来获取我们item组件的自定义属性
-        //    routeUrl:e.item.props.routeUrl,
-        //    url: e.key,
-        //    target:'mainFrame'
-        //}
-        //根据route路由地址和iframe地址的值判断使用哪个作为菜单页面展示方式
-        //actions.onLoadMain(menuInfo);
+        this.props.history.push(`./${e.key}`, this.state)
     }
 
     render() {
@@ -128,108 +117,123 @@ LeftMenu.propTypes = {
 LeftMenu.defaultProps = {
     menuItems: [
         {
-            "key": "0",
+            "key": "appstore",
             "icon": "appstore",
             "tittle": "Appstore",
             "routeUrl": "",
             "child": [{
-                "key": "3",
+                "key": "search",
                 "icon": "search",
                 "tittle": "Search",
                 "routeUrl": "",
-                "component":"Search"
+                "component": "Search"
             }]
         },
         {
-            "key": "1",
+            "key": "mail",
             "icon": "mail",
             "tittle": "Mail",
             "routeUrl": "",
             "child": [{
-                "key": "4",
+                "key": "notification",
                 "icon": "notification",
                 "tittle": "Notification",
                 "routeUrl": "",
-                "component":"Picture"
+                "component": "Notification"
             }]
         },
         {
-            "key": "2",
+            "key": "setting",
             "icon": "setting",
             "tittle": "Setting",
             "routeUrl": "",
             "child": [{
-                "key": "5",
+                "key": "star",
                 "icon": "star",
                 "tittle": "Star",
                 "routeUrl": "",
-                "component":"Picture"
+                "component": "Star"
             }]
         },
         {
-            "key": "6",
-            "icon": "setting",
-            "tittle": "Setting",
+            "key": "fund",
+            "icon": "fund",
+            "tittle": "Fund",
             "routeUrl": "",
-            "child": [{
-                "key": "7",
-                "icon": "star",
-                "tittle": "Star",
-                "routeUrl": "",
-                "component":"Picture"
-            }]
+            "child": [
+                {
+                    "key": "area-chart",
+                    "icon": "area-chart",
+                    "tittle": "Area-chart",
+                    "routeUrl": "",
+                    "component": "Area-chart"
+                },
+                {
+                    "key": "pie-chart",
+                    "icon": "pie-chart",
+                    "tittle": "Pie-chart",
+                    "routeUrl": "",
+                    "component": "Pie-chart"
+                },
+                {
+                    "key": "bar-chart",
+                    "icon": "bar-chart",
+                    "tittle": "Bar-chart",
+                    "routeUrl": "",
+                    "component": "Bar-chart"
+                }
+            ]
         },
         {
-            "key": "8",
-            "icon": "setting",
-            "tittle": "Setting",
+            "key": "user",
+            "icon": "user",
+            "tittle": "User",
             "routeUrl": "",
-            "child": [{
-                "key": "9",
-                "icon": "star",
-                "tittle": "Star",
-                "routeUrl": "",
-                "component":"Picture"
-            }]
+            "child": [
+                {
+                    "key": "picture",
+                    "icon": "picture",
+                    "tittle": "Picture",
+                    "routeUrl": "",
+                    "component": "Picture"
+                },
+                {
+                    "key": "phone",
+                    "icon": "phone",
+                    "tittle": "Phone",
+                    "routeUrl": "",
+                    "component": "Phone"
+                },
+                {
+                    "key": "message",
+                    "icon": "message",
+                    "tittle": "Message",
+                    "routeUrl": "",
+                    "component": "Message"
+                }
+            ]
         },
         {
-            "key": "10",
-            "icon": "setting",
-            "tittle": "Setting",
+            "key": "shopping",
+            "icon": "shopping",
+            "tittle": "Shopping",
             "routeUrl": "",
-            "child": [{
-                "key": "11",
-                "icon": "star",
-                "tittle": "Star",
-                "routeUrl": "",
-                "component":"Picture"
-            }]
-        },
-        {
-            "key": "12",
-            "icon": "setting",
-            "tittle": "Setting",
-            "routeUrl": "",
-            "child": [{
-                "key": "13",
-                "icon": "star",
-                "tittle": "Star",
-                "routeUrl": "",
-                "component":"Picture"
-            }]
-        },
-        {
-            "key": "14",
-            "icon": "setting",
-            "tittle": "Setting",
-            "routeUrl": "",
-            "child": [{
-                "key": "15",
-                "icon": "star",
-                "tittle": "Star",
-                "routeUrl": "",
-                "component":"Picture"
-            }]
+            "child": [
+                {
+                    "key": "dollar",
+                    "icon": "dollar",
+                    "tittle": "Dollar",
+                    "routeUrl": "",
+                    "component": "Dollar"
+                },
+                {
+                    "key": "red-envelope",
+                    "icon": "red-envelope",
+                    "tittle": "Red-envelope",
+                    "routeUrl": "",
+                    "component": "Red-envelope"
+                }
+            ]
         }
     ]
 };
@@ -244,8 +248,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addPage: page => dispatch(addPage(page)),
-        deletePage:index=>dispatch(deletePage(index)),
-        changePage:key=>dispatch(changePage(key))
+        deletePage: index => dispatch(deletePage(index)),
+        changePage: key => dispatch(changePage(key))
     }
 };
 

@@ -26,7 +26,7 @@ class TabContent extends React.Component {
 
     onChange = (activeKey) => {
         this.props.changePage(activeKey);
-        this.props.history.push(`/${activeKey}`,this.state)
+        this.props.history.push(`./${activeKey}`,this.state)
     };
 
     onEdit = (targetKey, action) => {
@@ -40,7 +40,7 @@ class TabContent extends React.Component {
         console.log(this.props.activeKey)
         this.props.deletePage(targetKey);
         console.log(this.props.activeKey)
-        this.props.history.push(`/${this.state.activeKey}`,this.state)
+        this.props.history.push(`./${this.state.activeKey}`,this.state)
 
     };
 

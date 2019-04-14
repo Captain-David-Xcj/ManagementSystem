@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route} from "react-router";
 import Welcome from "./welcome/Welcome";
-import Blog from "./blog/Blog";
+import Search from "./blog/Search";
 import Picture from "./picture/Picture";
 import {addPage, changePage, deletePage} from "../../actions";
 import {connect} from "react-redux";
@@ -23,10 +23,9 @@ class Content extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(this.state)
         const key=this.props.match.params.key;
         if(this.state.activeKey!==key){
-            this.props.history.push(`/${this.state.activeKey}`,this.state)
+            this.props.history.push(`./${this.state.activeKey}`,this.state)
         }
     }
 
@@ -35,9 +34,9 @@ class Content extends React.Component{
         return(
             <div>
             {(key===this.state.activeKey)?<div>
-                <Route exact path="/0" component={Welcome}/>
-                <Route exact path="/3" component={Blog}/>
-                <Route exact path="/5" component={Picture}/>
+                <Route exact path="/welcome" component={Welcome}/>
+                <Route exact path="/search" component={Search}/>
+                <Route exact path="/picture" component={Picture}/>
             </div>:<a href="/">路径不符,请点击返回首页！</a>}
             </div>
 

@@ -1,13 +1,13 @@
 import React from 'react'
 
-class Blog extends React.Component{
+class Search extends React.Component{
     render() {
         return(
             <div>
-                Blog!!!
+                Search!!!
             </div>
         )
     }
 }
 
-export default Blog
+export default Search

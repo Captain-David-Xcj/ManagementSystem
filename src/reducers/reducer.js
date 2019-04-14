@@ -2,7 +2,7 @@ import {ADD_PAGE, DELETE_PAGE, CHANGE_PAGE} from "../actions";
 
 const initialState = {
     pageList: [],
-    activeKey: "0"
+    activeKey: "welcome"
 };
 
 export const page = (state = initialState, action) => {
